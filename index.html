@@ -9,26 +9,32 @@
           margin: 0;
           padding: 0;
           box-sizing: border-box;
+          font-family: Arial, Helvetica, sans-serif;
       }
 
       body {
           color: var(--tg-theme-text-color);
-          background: var(--tg-theme-bg-color);
+          background: #71a0ff;
+          flex-direction: column;
+          display: flex;
       }
 
       .Main {
-          width: 100%;
+          margin-inline: auto;
           padding: 25px;
-          text-align: center;
           justify-content: center;
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 10px;
+          max-width: 600px;
+          width: 100%;
       }
 
       h1 {
+          margin-inline: auto;
           margin-top: 40px;
           margin-bottom: 10px;
+          color: white;
       }
 
       img {
@@ -41,7 +47,7 @@
         border-radius: 5px;
         outline: none;
         color: #170C0C;
-        background: #DDDBF6;
+        background: #f0f2f7;
         height: 32px;
         padding: 8px;
       }
@@ -55,8 +61,17 @@
         font-weight: 700;
         cursor: pointer;
         margin-inline: auto;
-        color: var(--tg-theme-button-text-color);
-        background: var(--tg-theme-button-color);
+        color: white;
+        background: #004de7;
+      }
+
+      .form_inputs {
+        display: flex;
+        flex-direction:column;
+        gap: 4px;
+        font-size: clamp(14px, .83vw, 16px);
+        color: white;
+        font-weight: 500;
       }
 
       .utm {
@@ -65,12 +80,28 @@
     </style>
   </head>
   <body>
+    <h1>Регистрация</h1>
     <form class="Main">
-      <input type="text" id="name-text">
-      <input type="date" id="date-text">
-      <input type="phone" id="phone-text">
-      <input type="email" id="email-text">
-      <input type="password" id="password-text">
+      <div class="form_inputs">
+        <label for="name-text">Имя</label>
+        <input type="text" id="name-text">
+      </div>
+      <div class="form_inputs">
+        <label for="date-text">День рождения</label>
+        <input type="date" id="date-text">
+      </div>
+      <div class="form_inputs">
+        <label for="phone-text">Телефон</label>
+        <input type="phone" id="phone-text">
+      </div>
+      <div class="form_inputs">
+        <label for="email-text">Эл.почта</label>
+        <input type="email" id="email-text">
+      </div>
+      <div class="form_inputs">
+        <label for="password-text">Пароль</label>
+        <input type="password" id="password-text">
+      </div>
       <div class="utm">
         <input type="text" name="utm_source" id="source">
         <input type="text" name="utm_medium" id="medium">
@@ -78,7 +109,7 @@
         <input type="text" name="utm_content" id="content">
         <input type="text" name="utm_term" id="term">
       </div>
-      <button type="button" class="btn" id="register-btn">Зарегистрировать</button>
+      <button type="button" class="btn" id="register-btn">Создать пользователя</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
     <script src="miniapp.js"></script>

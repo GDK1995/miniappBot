@@ -69,7 +69,7 @@ async def parse_data(message: types.Message):
                 async with session.post(API_REGISTRATION_URL, json=payload) as resp:
                     if resp.status in (200, 201):
                         result = await resp.json()
-                        await message.answer(f"✅ Успешная регистрация!\nЛогин: {result.email}")
+                        await message.answer(f"✅ Успешная регистрация!\nЛогин: {result['email']}")
                     else:
                         await message.answer(f"⚠️ Ошибка при регистрации. Код: {resp.status}")
             except Exception as e:
