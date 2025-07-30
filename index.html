@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini App Test</title>
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          color: var(--tg-theme-text-color);
+          background: var(--tg-theme-bg-color);
+      }
+
+      .Main {
+          width: 100%;
+          padding: 25px;
+          text-align: center;
+          justify-content: center;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+      }
+
+      h1 {
+          margin-top: 40px;
+          margin-bottom: 10px;
+      }
+
+      img {
+          width: 70px;
+          margin: 30px auto;
+      }
+
+      input {
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        color: #170C0C;
+        background: #DDDBF6;
+        height: 32px;
+        padding: 8px;
+      }
+
+      .btn {
+        border: none;
+        border-radius: 5px;
+        height: 48px;
+        width: 200px;
+        font-style: 26px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-inline: auto;
+        color: var(--tg-theme-button-text-color);
+        background: var(--tg-theme-button-color);
+      }
+
+      .utm {
+          display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="Main">
+      <input type="text" id="name-text">
+      <input type="date" id="date-text">
+      <input type="phone" id="phone-text">
+      <input type="email" id="email-text">
+      <input type="password" id="password-text">
+      <div class="utm">
+        <input type="text" name="utm_source" id="source">
+        <input type="text" name="utm_medium" id="medium">
+        <input type="text" name="utm_campaign" id="campaign">
+        <input type="text" name="utm_content" id="content">
+        <input type="text" name="utm_term" id="term">
+      </div>
+      <button type="button" class="btn" id="register-btn">Зарегистрировать</button>
+    </form>
+    <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
+    <script src="miniapp.js"></script>
+  </body>
+</html>
