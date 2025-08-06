@@ -16,15 +16,27 @@ API_REGISTRATION_URL = "https://goodmood.kz/api/v1/user/accounts/create/"
 
 @dp.message(CommandStart())
 async def start(message: types.Message):
-    webAppInfo = types.WebAppInfo(url="https://miniapp.excourse.kz/?v=1")
-    builder = InlineKeyboardBuilder()
-    builder.add(types.InlineKeyboardButton(text='sign up!', web_app=webAppInfo))
-    
-    await message.answer(text='Привет! Нажми на кнопку "Sign up", который находится внизу', reply_markup=builder.as_markup())
+    keyboard = types.ReplyKeyboardMarkup(
+        keyboard=[
+            [
+                types.KeyboardButton(
+                    text="Open WebApp",
+                    web_app=types.WebAppInfo(url="https://miniapp.excourse.kz/?v=6")
+                )
+            ]
+        ],
+        resize_keyboard=True
+    )
 
+    await message.answer(
+        "Привет! Нажми на кнопку ниже, чтобы открыть WebApp:",
+        reply_markup=keyboard
+    )
 
-@dp.message(F.content_type == types.ContentType.WEB_APP_DATA)
+@dp.message(F.web_app_data)
 async def parse_data(message: types.Message):
+    print(">>BOT RECEIVED WEB APP DATA", message.from_user.id)
+    print(">BOT RECEIVED WEB APP DATA", message.web_app_data.data)
     try:
         data = json.loads(message.web_app_data.data)
         logging.info("WebApp data received: %s", data)
@@ -81,7 +93,6 @@ async def parse_data(message: types.Message):
             message.from_user.id,
             "Ошибка: данные от WebApp не в формате JSON"
         )
-
 
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
